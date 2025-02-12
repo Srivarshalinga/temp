@@ -9,13 +9,22 @@
     <div>
         <input type="text" placeholder="Enter color name" id="color">
         <button onclick="changeColor()">Submit</button><br>
+        <select id="col">
+            
+            <option>green</option>
+            <option>blue</option>
+            <option>red</option>
+        </select>
         <h1><span id="text">Hello World!!</span></h1>
     </div>
     <script>
         function changeColor(){
             let color=document.getElementById("color").value;
+            let backColor=document.getElementById("col").value;
             let text=document.getElementById("text");
+            text.style.backgroundColor=backColor;
             text.style.color=color;
+            
 
         }
     </script>
