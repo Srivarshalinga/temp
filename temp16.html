@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let users=[];
+        let useremail="";
+        let username="";
+        let currBalance=0;
+
+        function changingAmount(){
+            let amount=Number(document.getElementById("amount").value);
+            let type=document.getElementById("type").value
+            for(let i=0;i<users.length;i++){
+                if(users[i].email==useremail){
+                    if(type==1){
+                        users[i].balance += amount
+                    }
+                    else if(type==2){
+                        if(users[i].balance >= amount){
+                        users[i].balance -= amount
+                        }
+                        else{
+                            // spBalance.innerHTML="Insuffient Balance";
+                            // currBalance=""
+                            // currBalance="Insufficeint Balance";
+                            alert("Insufficient Balance");
+                        }
+                    }
+                    else if (type == 3){
+
+                    }
+                    spBalance.innerHTML=users[i].balance;
+                    break;
+                }
+            }
+        }
+        function home(){
+            str=`
+                <div>
+                    <h2>Welcome ${username}!!</h2>
+                    <p><button onclick='show()'>Log Out</button></p>
+                    <p><select id="type">
+                        <option value=0>--select--</option>
+                        <option value=1>Deposit</option>
+                        <option value=2>Withdraw</option>
+                        <option value=3>Transfer</option>
+                        </select>
+                    </p>
+                    <p><select id="selUser">
+                        <option value=0>--select--</option>
+                        <option value=1>supraja</option>
+                        <option value=2>varsha</option>
+                        </select>
+                    </p>
+                    <p><input type="number" id="amount" placeholder="Enter Amount"></p>
+                    <button onclick="changingAmount()">submit</button>
+                    <p>current Balance: <span id="spBalance">${currBalance}</span></p>
+                </div>
+                `;
+                 root.innerHTML=str;
+                 
+        }
+        function addUser(){
+            let name=document.getElementById("name").value;
+            let email=document.getElementById("email").value;
+            let password=document.getElementById("password").value;
+            let dob=document.getElementById("dob").value;
+
+            let user={
+                name:name,
+                email:email,
+                password:password,
+                dob:dob,
+                balance:0
+            };
+            users.push(user);
+            console.log(users);
+            show();
+        }
+        // let text=document.getElementById("root");
+        function showForm(){
+            let str=`
+            <div>
+                <h2>Registration Form</h2>
+                <p><input type="text" id="name" placeholder="Enter Username"></p>
+                <p><input type="email" id="email" placeholder="Enter email id"></p>
+                <p><input type="password" id="password" placeholder="create Password"></p>
+                
+                <p><input type="date" id="dob"></p>
+                <p><button onclick='addUser()'>submit</button></p>
+                <p>Already a member? <button onclick='show()'>Login Here</button></p>
+            </div>
+            `
+            root.innerHTML=str;
+        }
+        function display(){
+            let email=document.getElementById("email").value;
+            let password=document.getElementById("password").value;
+            for(let i=0;i<users.length;i++){
+                if(users[i].email == email && users[i].password == password){
+                    useremail=email;
+                    username=users[i].name
+                    currBalance=users[i].balance
+                    home();
+                    break;
+                }
+                else{
+                    msg.innerHTML="Access Denied!!";
+                }
+            }
+
+        }
+        function show(){
+            let str=`
+            <div>
+                <h2>Login Form</h2>
+                <div id="msg"></div>
+                <p><input type="text" id="email" placeholder="Username or Email"></p>
+                <p><input type="password" id="password" placeholder="Password"></p>
+                <button onclick='display()'> Log In</button>
+                <p><button onclick='showForm()'>Create Account</button></p>
+                
+            </div>
+            `
+            root.innerHTML=str;
+        }
+    </script>
+</head>
+<body onload="show()">
+    <h1>HDFC Bank</h1>
+    <hr>
+    <div id="root"></div>
+    <hr>
+    <h3>@copyright 2005. All rights are reserved</h3>
+</body>
+</html>

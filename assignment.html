@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function calculations(){
+            let v1=document.getElementById("frst").value;
+            let v2=document.getElementById("second".value);
+            let str=""
+            let add=v1+v2
+            str=str + add;
+            body.innerHTML=str
+            
+            
+        }
+
+    </script>
+</head>
+<body>
+    <input type="text" id="frst" placeholder="Enter Your first number">
+    <input type="text" id="second" placeholder="Enter Your second number">
+    <button onclick="calculations()">Submit</button>
+    <div id="body"></div>
+</body>
+</html>

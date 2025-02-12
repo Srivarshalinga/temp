@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display:flex;
+            padding:150px;
+            justify-content: center;
+            align-items:center;
+            background-color:#eee;
+        }
+        .input-box{
+            height:40px;
+            width:250px;
+            border-radius:8px;
+            border-width:1px;
+            padding:6px;
+        }
+        #h{
+            color:blue;
+            font-size:58px;
+        }
+        .login{
+            background-color: white;
+            text-align:center;
+            padding:60px;
+            border-radius:15px;
+            margin:60px;
+            margin-left:80px;
+        }
+        .login-button{
+            background-color:blue;
+            color:white;
+            padding: 8px;
+        }
+        .create-button{
+            background-color:green;
+            color:#eee;
+            width:150px;
+            height:40px;
+            border-radius: 8px;
+            border:none;
+        }
+        .fpwd{
+            background-color: transparent;
+            border: none;
+        }
+        h3{
+            font-size:27px;
+        }
+
+    </style>
+</head>
+<body>
+<div  class="container">
+    <div>
+        <h1 id="h">facebook</h1>
+        <h3>facebook helps you connect and share with the people in your life</h3>
+    </div>
+    <div class="login">
+        <form>
+            <input type="text" placeholder="Email id or phone Number" class="input-box"><br><br>
+            <input type="password" placeholder="Password" class="input-box"><br><br>
+            <button class="login-button input-box">Log In</button><br><br>
+            <button class="fpwd"><a href="#">Forgot Password</a></button><br><br>
+            <button class="create-button">Create New Account</button><br><br>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
