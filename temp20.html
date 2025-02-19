@@ -42,7 +42,9 @@
                         id:${value.id}-
                      name:${value.name}- 
                      price:${value.price}-
-                        <button>+</button>${value.id}<button>-</button></div>`;
+                        <button>-</button>${value.id}<button>+</button>
+                        -${value.price * cart[value.id]}
+                        </div>`;
                 }
                 
             });
