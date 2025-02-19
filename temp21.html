@@ -5,26 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .main-container{
+        body{
+            background-color:#eeeeee;
+        }
+        .container{
+            background-color: white;
+            border-radius:10px;
+            padding:20px;
+            width:400px;
+            margin:auto;
+        }
+        .row{
             display:flex;
             justify-content: center;
-            
         }
-        .form-container{
-            background-color: azure;
-            padding:25px;
-            /* text-align: center; */
+        .title{
+            font-size: 30px;
+        }
+        .header{
+            font-size: 60px;
+            font-weight: 600;
+            color:blue;
+            font-family: Verdana;
+            text-align: center;
+            margin:38px;
+        }
+        .caption{
+            font-size: 20px;
+            color:grey;
+            text-align: center;
+        }
+        input,select{
+            width:100%;
+            margin:7px;
+            border-radius: 3px;
+            padding:8px;
+            border: 1px solid gray;
+        }
+        button{
+            color:white;
+            background-color: rgb(71, 190, 71);
+            font-size: 20px;
+            padding: 10px;
             border-radius: 10px;
+            width:150px;
+            border:none;
+        }
+        .leftCaption{
+            color:grey;
+            margin-left: 5px;
+            font-size: 15px;
+        }
+        .qmark{
+            background-color: grey;
+            border-radius: 5px;
+            color:white;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin:2px;
+
+        }
+        .radioClass{
+            border: 1px solid gray;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 5px;
+            border-radius: 5px;
+            padding: 3px;
         }
     </style>
-    <script>
-        for(let i=1;i<=31)
-        let val=document.createElement(option);
-        
-    </script>
+    
 </head>
 <body>
-    <h1>facebook</h1>
+    <div class="header">facebook</div>
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="title">create a new account</div>
+                <div class="caption">It's quick and easy</div>
+            </div>
+        </div>
+        <hr />
+    </div>
+    <div id="root"></div>
+    <script>
+        const showData = () => {
+            let firstname=document.getElementById("firstname").value;
+            let surname=document.getElementById("surname").value;
+            let str=`
+            <div>
+                Name:${firstname} ${surname}
+            </div>
+            `
+            root.innerHTML=str;
+        } ;
+
+         const showForm = () => {
+            let str=`
+        <div class="row">
+            <input type="text" placeholder="First name">
+            <input type="text" placeholder="Surname">
+        </div>
+        <div class="row" style="justify-content:start;">
+            <div class="leftCaption">
+                Date of Birth
+                <span class="qmark">
+                    <abbr title="Click for more information">?</abbr>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <select id="day"></select>
+            <select id="month"></select>
+            <select id="year"></select>
+        </div>
+        <div class="row" style="justify-content:start;">
+            <div class="leftCaption">
+                Gender
+                <span class="qmark">
+                    <abbr title="Click for more information">?</abbr>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="radioClass">
+                <div><label class="g">Female </label></div> 
+                <div><input type="radio" name="gender" onclick="togglePronoun()"></div>
+            </div>
+            <div class="radioClass">
+                <div><label class="g">Male </label></div>
+                <div><input type="radio" name="gender" onclick="togglePronoun()"></div>
+            </div>
+            <div class="radioClass">
+                <div><label class="g">custom </label></div>
+                <div><input type="radio" name="gender" onclick="togglePronoun()"></div>
+            </div>
+        </div>
+        <div class="row">
+            <select id="prSelect" style="display:none;">
+                <option value="">Select your Pronoun</option>
+                <option value="">She : "Wish her a happy Birthday"</option>
+                <option value="">He : "Wish him a happy Birthday"</option>
+                <option value="">They : "Wish them a happy Birthday"</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <input type="text" placeholder="Enter your Mobile Number or E-mail address">
+        </div>
+        <div class="row">
+            <input type="text" placeholder="Enter password">
+        </div>
+        <div class="row">
+            <button>Sign Up</button>
+        </div>
+        `;
+        root.innerHTML=str;
+    };
+    showForm();
+        // <div class="row">
+        //     <a href="#" style="padding:8px"> Already have an account?</a>
+        // </div>
+        
+    
+    
+        let str1="";
+        // let date=document.getElementById("day");
+        for(let i=1;i<=31;i++){
+            str1 += `<option>${i}</option>`;
+        }
+        day.innerHTML=str1;
+
+        let str2=["january","February"];
+        // let date=document.getElementById("day");
+        for(let i=0;i<str2.length;i++){
+            str2 += `<option>${str2[i]}</option>`;
+        }
+        month.innerHTML=str2;
+
+        let str3="";
+        // let date=document.getElementById("day");
+        for(let i=2025;i>=1905;i--){
+            str3 += `<option>${i}</option>`;
+        }
+        year.innerHTML=str3;
+
+        const togglePronoun = () => {
+            let p=document.getElementsByName("gender");
+            if(p[2].checked){
+                prSelect.style.display = 'block';
+            }
+            else{
+                prSelect.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
+<!-- <div class="row"></div>
+h1>facebook</h1>
     <div class="main-container">
         <form class="form-container">
             <div style="text-align: center;">
@@ -47,12 +227,4 @@
         </form>
             
     
-    </div>
-</body>
-</html>
-<!-- <select id="col">
-            
-    <option>green</option>
-    <option>blue</option>
-    <option>red</option>
-</select> -->
+    </div> -->
